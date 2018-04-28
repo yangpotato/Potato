@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Potato</string>
+    <string name="phone">手机号</string>
+    <string name="pw">密码</string>
+    <string name="nick">昵称</string>
+    <string name="npw">确认密码</string>
+</resources>
