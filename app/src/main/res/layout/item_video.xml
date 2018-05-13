@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="252dp">
+<cn.jzvd.JZVideoPlayerStandard
+    android:id="@+id/video_play"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/tv_icon"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:riv_oval="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/test"/>
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:layout_toRightOf="@id/tv_icon"
+            android:textSize="20dp"
+            android:textColor="@color/color333"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/colorView"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>

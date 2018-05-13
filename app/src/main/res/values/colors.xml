@@ -5,4 +5,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorHint">#d1caca</color>
     <color name="colorHeight">#3B9CD8</color>
+    <color name="transparent">#80000000</color>
+    <color name="transparent2">#00000000</color>
+    <color name="mainColor">#ffffff</color>
+    <color name="color333">#333333</color>
+    <color name="color666">#666666</color>
+    <color name="color999">#999999</color>
+    <color name="colorView">#E2E2E2</color>
+    <color name="colorB">#F0F5F9</color>
+    <color name="translucent_white">#E2E2E2</color>
 </resources>

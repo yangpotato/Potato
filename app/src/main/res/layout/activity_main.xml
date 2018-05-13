@@ -2,9 +2,59 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yang.potato.potato.activitys.MainActivity">
+    android:background="#ffffff">
 
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/radio">
+    </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/colorView"
+        android:layout_above="@id/radio"/>
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbtn_main_index"
+            style="@style/MyRadioButton"
+            android:drawableTop="@drawable/selector_main_index"
+            android:text="首页"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rbtn_main_shop"
+            style="@style/MyRadioButton"
+            android:drawableTop="@drawable/selector_main_bacao"
+            android:text="视频"/>
+
+        <Button
+            android:id="@+id/btn_main_add"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="@mipmap/tab_add" />
+        <RadioButton
+            android:id="@+id/rbtn_main_msg"
+            style="@style/MyRadioButton"
+            android:drawableTop="@drawable/selector_main_mes"
+            android:text="消息"/>
+        <RadioButton
+            android:id="@+id/rbtn_main_me"
+            style="@style/MyRadioButton"
+            android:drawableTop="@drawable/selector_main_me"
+            android:text="我的"/>
+    </RadioGroup>
 </RelativeLayout>
+

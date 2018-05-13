@@ -1,5 +1,6 @@
 package com.yang.potato.potato.activitys;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,20 +15,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yang.potato.potato.R;
 import com.yang.potato.potato.base.BaseActivity;
 import com.yang.potato.potato.contract.LoginContract;
 import com.yang.potato.potato.custView.LoginAnimationView;
 import com.yang.potato.potato.custView.LoginVideoView;
+import com.yang.potato.potato.entity.User;
 import com.yang.potato.potato.presenter.LoginPresenter;
+import com.yang.potato.potato.utils.Utils;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
@@ -46,14 +55,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.img_login_cancel_2)
     ImageView imgLoginCancel2;
 
-    private LoginContract.Presenter presenter;
+    private LoginPresenter presenter;
 
     UMShareAPI mShareAPI;
-
-    @Override
-    protected int provideContentViewId() {
-        return R.layout.activity_login;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,23 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         presenter.setImageViewVisibility(edtLoginPhone,imgLoginCancel1);
         presenter.setImageViewVisibility(edtLoginPw,imgLoginCancel2);
 
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void initView() {
         diplayBackground();
+    }
+
+    @Override
+    protected void initData() {
+            if(getIntent() != null){
+                edtLoginPhone.setText(getIntent().getStringExtra("phone"));
+            }
     }
 
     @Override
@@ -97,7 +117,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
 
-    @OnClick({R.id.img_login_cancel_1, R.id.img_login_visible, R.id.img_login_cancel_2, R.id.loginBtn_login})
+    @OnClick({R.id.img_login_cancel_1, R.id.img_login_visible, R.id.img_login_cancel_2, R.id.loginBtn_login, R.id.tv_register})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_login_cancel_1:
@@ -119,28 +139,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                     return;
                 }
                 loginBtnLogin.start();
-                mShareAPI.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.QQ, new UMAuthListener() {
-                    @Override
-                    public void onStart(SHARE_MEDIA share_media) {
-                        Log.i("ygy", "开始");
-                    }
-
-                    @Override
-                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                        Toast.makeText(LoginActivity.this, "成功了", Toast.LENGTH_LONG).show();
-                        Log.i("ygy", "成功");
-                    }
-
-                    @Override
-                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
-                        Log.i("ygy", "i="+i+"->"+throwable.toString());
-                    }
-
-                    @Override
-                    public void onCancel(SHARE_MEDIA share_media, int i) {
-                        Log.i("ygy", "取消");
-                    }
-                });
+                Map<String, String> map = new HashMap<>();
+                map.put("code", edtLoginPhone.getText().toString());
+                map.put("pwd", edtLoginPw.getText().toString());
+                map.put("type", "0");
+                presenter.login(map);
+                break;
+            case R.id.tv_register:
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
         }
     }
@@ -188,5 +194,39 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         }else{
             edtLoginPw.setText("");
         }
+    }
+
+    @Override
+    public void showInfo(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void toMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public void saveUser(User user) {
+        Utils.saveUser(this, user);
+        JPushInterface.setAlias(LoginActivity.this, user.getUserId(), new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                Log.d("Debug:", "i:"+i+"别名:"+s);
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.unSubscribe();
     }
 }

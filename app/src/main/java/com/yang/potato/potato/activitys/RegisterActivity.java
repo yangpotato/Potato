@@ -1,46 +1,49 @@
 package com.yang.potato.potato.activitys;
 
+
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v4.app.Fragment;
+import android.widget.FrameLayout;
 
 import com.yang.potato.potato.R;
 import com.yang.potato.potato.base.BaseActivity;
-import com.yang.potato.potato.custView.LoginAnimationView;
+import com.yang.potato.potato.ui.register.InputPhoneFragment;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity {
 
-    @BindView(R.id.edt_register_nick)
-    EditText edtRegisterNick;
-    @BindView(R.id.edt_register_phone)
-    EditText edtRegisterPhone;
-    @BindView(R.id.edt_register_pw)
-    EditText edtRegisterPw;
-    @BindView(R.id.edt_register_2pw)
-    EditText edtRegister2pw;
-    @BindView(R.id.btn_register)
-    LoginAnimationView btnRegister;
+
+    @BindView(R.id.fragment)
+    FrameLayout fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        btnRegister.setText("注  册");
+        Fragment fm = new InputPhoneFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment, fm).commit();
     }
 
     @Override
-    protected int provideContentViewId() {
+    protected int getLayoutId() {
         return R.layout.activity_register;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
 
     @Override
     public boolean setStatusBarTransparent() {
         return true;
     }
 
-    @OnClick(R.id.btn_register)
-    public void onClick() {
-        btnRegister.start();
-    }
+
 }

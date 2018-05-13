@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F5F9"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+    <include layout="@layout/toolbar"/>
+    <RelativeLayout
+        android:id="@+id/lin_setting_info_icon"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@color/mainColor"
+        android:layout_marginTop="5dp">
+        <TextView
+            style="@style/SettingTextStyle"
+            android:text="修改头像"
+            android:textColor="@color/color999" />
+        <ImageView
+            android:id="@+id/img1"
+            style="@style/SettingImageStyle"/>
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img_icon"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"
+            android:src="@mipmap/test"
+            android:layout_toLeftOf="@id/img1"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/colorView"/>
+    <RelativeLayout
+        android:id="@+id/lin_setting_info_name"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/mainColor"
+        >
+        <TextView
+            style="@style/SettingTextStyle"
+            android:text="修改昵称"
+            android:textColor="@color/color999" />
+        <ImageView
+            android:id="@+id/img2"
+            style="@style/SettingImageStyle"/>
+        <EditText
+            android:id="@+id/edtName"
+            style="@style/SettingTextStyle"
+            android:text="昵称"
+            android:layout_toLeftOf="@id/img2"
+            android:layout_marginEnd="15dp"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:singleLine="true"
+            android:maxLines="1"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/colorView"/>
+
+    <RelativeLayout
+        android:id="@+id/lin_setting_info_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainColor"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp">
+        <TextView
+            android:id="@+id/tvv"
+            style="@style/SettingTextStyle"
+            android:text="个性签名"
+            android:textColor="@color/color999"
+            android:layout_centerVertical="false" />
+
+        <EditText
+            android:id="@+id/edt_seting_info"
+            style="@style/SettingTextStyle"
+            android:layout_toRightOf="@id/tvv"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="false"
+            android:hint="美妆达人，爱好健身、美食，欢迎各位小仙女们一起交流呀~"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:textCursorDrawable="@null"/>
+    </RelativeLayout>
+</LinearLayout>
+

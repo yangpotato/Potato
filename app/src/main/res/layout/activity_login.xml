@@ -101,5 +101,14 @@
             android:layout_height="35dp"
             android:layout_below="@+id/layout_login_2"
             android:layout_marginTop="30dp"/>
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册新用户"
+            android:textColor="#3B9CD8"
+            android:layout_below="@+id/loginBtn_login"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"/>
     </RelativeLayout>
 </RelativeLayout>

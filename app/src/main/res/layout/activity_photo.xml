@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.yang.potato.potato.activitys.PhotoActivity">
+  <include layout="@layout/toolbar"/>
+<ImageView
+    android:id="@+id/img_photo"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:layout_below="@+id/toolbar"/>
+
+  <SeekBar
+      android:id="@+id/seekbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/recycle"
+      android:layout_margin="30dp"
+      android:max="10"/>
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/recycle"
+      android:layout_alignParentBottom="true"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"/>
+</RelativeLayout>

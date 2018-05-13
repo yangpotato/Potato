@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/mainColor">
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="输入登录密码"
+        android:textSize="23dp"
+        android:textColor="@color/color333"
+        android:gravity="center"
+        android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edt_login_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="输入密码（最少6位）"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/color999"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/colorView"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"/>
+    <EditText
+        android:id="@+id/edt_login_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="再次输入密码（最少6位）"
+        android:inputType="textPassword"
+        android:textCursorDrawable="@null"
+        android:textColorHint="@color/color999"
+        android:textSize="20dp"
+        android:focusable="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"/>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/colorView"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btn_login_sure"
+        android:layout_width="245dp"
+        android:layout_height="42dp"
+        android:text="确定"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/selector_login"/>
+
+
+</LinearLayout>

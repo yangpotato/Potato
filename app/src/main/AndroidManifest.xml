@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yang.potato.potato">
 
     <!-- Required -->
     <uses-permission android:name="com.yang.potato.potato.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -25,7 +26,6 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -34,20 +34,73 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activitys.MainActivity" />
+        <activity android:name=".activitys.LoginActivity" />
+        <activity android:name=".activitys.RegisterActivity" />
+        <activity android:name=".wxapi.WXEntryActivity" />
+
+        <!-- 微信 -->
+        <!-- <activity -->
+        <!-- android:name=".wxapi.WXEntryActivity" -->
+        <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
+        <!-- android:exported="true" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@android:style/Theme.Translucent.NoTitleBar" /> -->
 
 
+        <!-- QQ -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-        <activity android:name="com.yang.potato.potato.activitys.MainActivity"></activity>
-        <activity android:name="com.yang.potato.potato.activitys.LoginActivity">
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent101469007" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activitys.WelcomeActivity"
+            android:theme="@style/WelcomeStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.yang.potato.potato.activitys.RegisterActivity">
-
-        </activity>
+        <activity android:name=".activitys.SettingActivity" />
+        <activity android:name=".activitys.AlbumInfoActivity" />
+        <activity android:name=".activitys.MessageActivity" />
+        <activity
+            android:name=".activitys.SelectActivity"
+            android:theme="@style/myTransparent" />
+        <activity android:name=".activitys.UploadPhotoActivity" />
+        <activity android:name=".activitys.TagActivity" />
+        <activity android:name=".activitys.getZanActivity" />
+        <activity android:name=".activitys.FollowListActivity" />
+        <activity android:name=".back.UserListActivity" />
+        <activity android:name=".back.BackUserActivity" />
+        <activity android:name=".back.AlbumListActivity" />
+        <activity android:name=".back.VideoListActivity" />
+        <activity android:name=".back.BackLoginActivity" />
+        <activity android:name=".back.InfoActivity" />
+        <activity android:name=".activitys.AddCommentActivity" />
+        <activity android:name=".activitys.CreateALbumActivity" />
+        <activity android:name=".activitys.PhotoActivity" />
+        <activity android:name=".activitys.SettingInfoActivity" />
+        <activity android:name=".activitys.ChangePwdActivity" />
+        <activity android:name=".activitys.AddVideoActivity" />
+        <activity android:name=".activitys.SearchActivity" />
+        <activity android:name=".activitys.SelectZanByUserIdsActivity" />
+        <activity android:name=".activitys.getCommentActivity" />
+        <activity android:name=".activitys.AddTagActivity"></activity>
     </application>
 
 </manifest>

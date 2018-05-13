@@ -8,13 +8,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.umeng.socialize.UMShareAPI;
+import com.yang.potato.potato.base.BaseCallBack;
+import com.yang.potato.potato.base.BaseRequest;
+import com.yang.potato.potato.contract.BasePresenter;
 import com.yang.potato.potato.contract.LoginContract;
+import com.yang.potato.potato.entity.User;
+import com.yang.potato.potato.model.LoginModel;
+import com.yang.potato.potato.utils.LogUtils;
+
+import java.util.Map;
 
 /**
  * Created by potato on 2018/1/16.
  */
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class LoginPresenter extends BasePresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private LoginContract.Model model;
 
@@ -24,7 +32,35 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     public LoginPresenter(LoginContract.View view) {
         this.view = view;
+        model = new LoginModel();
         Log.d("popo","1");
+    }
+
+    @Override
+    public void login(Map<String, String> map) {
+        addSubscription(model.login(map,new BaseCallBack<BaseRequest<User>>(){
+
+            @Override
+            public void onSuccess(BaseRequest<User> userBaseRequest) {
+                if(userBaseRequest.isOk()) {
+                    LogUtils.i("成功");
+
+                    //view.backLoginButtonAnima();
+                    view.saveUser(userBaseRequest.getData());
+                    view.toMainActivity();
+
+                }
+                view.backLoginButtonAnima();
+
+            }
+
+            @Override
+            public void OnFailed(String error) {
+                view.backLoginButtonAnima();
+                view.showInfo("登录失败");
+                LogUtils.i(error);
+            }
+        }));
     }
 
     @Override
@@ -65,5 +101,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void clearText(int type) {
         view.clearText(type);
     }
+
 }
 
